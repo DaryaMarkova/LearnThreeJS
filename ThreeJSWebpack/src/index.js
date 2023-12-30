@@ -9,6 +9,7 @@ import {
   WebGLRenderer,
   IcosahedronGeometry,
   MeshNormalMaterial,
+  BoxBufferGeometry,
   Mesh,
 } from "three";
 
@@ -16,11 +17,12 @@ const scene = new Scene();
 const camera = new PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
-  0.1,
+  0.5,
   1000
 );
 
-const geometry = new IcosahedronGeometry();
+// const geometry = new IcosahedronGeometry();
+const geometry = new BoxBufferGeometry(2, 2, 2);
 const material = new MeshNormalMaterial();
 const mesh = new Mesh(geometry, material);
 scene.add(mesh);
