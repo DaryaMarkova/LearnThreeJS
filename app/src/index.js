@@ -1,4 +1,4 @@
-import {
+/*import {
   BoxBufferGeometry,
   Color,
   Mesh,
@@ -34,3 +34,10 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 container.append(renderer.domElement);
 renderer.render(scene, camera);
+
+*/
+import { World } from "./World";
+
+const world = new World(document.body);
+world.render();
+console.log("world", world);
