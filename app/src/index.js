@@ -39,5 +39,6 @@ renderer.render(scene, camera);
 import { World } from "./World";
 
 const world = new World(document.body);
-world.render();
+world.render({ animate: true });
+
 console.log("world", world);
