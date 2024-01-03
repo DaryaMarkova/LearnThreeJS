@@ -6,6 +6,7 @@ import { createLights } from "./components/lights.js";
 import { createRenderer } from "./components/renderer.js";
 import { animate } from "./components/animate.js";
 import { Resizer } from "./components/resizer.js";
+import { Loop } from "./components/animate.js";
 
 export class World {
   constructor(container) {
@@ -13,25 +14,26 @@ export class World {
     this.scene = createScene();
     this.renderer = createRenderer();
     this.light = createLights();
+    this.loop = new Loop(this.camera, this.scene, this.renderer);
 
     container.append(this.renderer.domElement);
 
     this.cube = createCube(2, 2, 2);
     this.scene.add(this.cube, this.light);
 
-    const secondCube = createCube(3, 3, 3);
-    this.scene.add(secondCube);
-
+    this.loop.updatables.push(this.cube);
     this.resizer = new Resizer(container, this.camera, this.renderer);
   }
 
   render() {
     this.renderer.render(this.scene, this.camera);
+  }
 
-    animate.call(this, this.renderer, this.scene, this.cube, this.camera);
+  start() {
+    this.loop.start();
+  }
 
-    /* if (params && params.animate) {
-      animate.call(this, this.scene, this.cube);
-    }*/
+  stop() {
+    this.loop.stop();
   }
 }
