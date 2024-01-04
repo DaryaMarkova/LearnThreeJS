@@ -18,9 +18,6 @@ export function createCube(x, y, z) {
     }
 
     cube.rotation.z += radiansPerSecond * delta;
-    cube.scale.x += 0.01;
-    cube.scale.y += 0.01;
-    cube.scale.z += 0.01;
   };
 
   return cube;
