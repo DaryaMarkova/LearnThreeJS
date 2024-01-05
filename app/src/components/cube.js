@@ -6,7 +6,6 @@ const radiansPerSecond = MathUtils.degToRad(30);
 function createMaterial() {
   const textureLoader = new TextureLoader();
 
-  // load a texture
   const texture = textureLoader.load("/texture.jpg");
   const material = new MeshStandardMaterial({
     map: texture,
