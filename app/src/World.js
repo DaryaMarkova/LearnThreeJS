@@ -4,7 +4,6 @@ import { createScene } from "./components/scene.js";
 import { createLights } from "./components/lights.js";
 
 import { createRenderer } from "./components/renderer.js";
-import { animate } from "./components/animate.js";
 import { Resizer } from "./components/resizer.js";
 import { Loop } from "./components/animate.js";
 
@@ -14,6 +13,7 @@ export class World {
     this.scene = createScene();
     this.renderer = createRenderer();
     this.light = createLights();
+
     this.loop = new Loop(this.camera, this.scene, this.renderer);
 
     container.append(this.renderer.domElement);

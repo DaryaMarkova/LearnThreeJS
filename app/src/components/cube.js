@@ -1,22 +1,28 @@
 import { BoxBufferGeometry, Mesh, MeshStandardMaterial } from "three";
-import { MathUtils } from "three";
+import { MathUtils, TextureLoader } from "three";
 
 const radiansPerSecond = MathUtils.degToRad(30);
 
+function createMaterial() {
+  const textureLoader = new TextureLoader();
+
+  // load a texture
+  const texture = textureLoader.load("/texture.jpg");
+  const material = new MeshStandardMaterial({
+    map: texture,
+  });
+
+  return material;
+}
+
 export function createCube(x, y, z) {
-  // create a geometry
   const geometry = new BoxBufferGeometry(x, y, z);
-  // create a default (white) Basic material
-  const material = new MeshStandardMaterial({ color: "purple" });
-  // create a Mesh containing the geometry and material
+  const material = createMaterial();
+
   const cube = new Mesh(geometry, material);
   cube.rotation.set(-0.5, -0.1, 0.8);
 
   cube.tick = (delta) => {
-    if (cube.scale.x > 5) {
-      return;
-    }
-
     cube.rotation.z += radiansPerSecond * delta;
   };
 
