@@ -7,6 +7,7 @@ function createMaterial() {
   const textureLoader = new TextureLoader();
 
   const texture = textureLoader.load("/texture.jpg");
+
   const material = new MeshStandardMaterial({
     map: texture,
   });
@@ -22,7 +23,7 @@ export function createCube(x, y, z) {
   cube.rotation.set(-0.5, -0.1, 0.8);
 
   cube.tick = (delta) => {
-    cube.rotation.z += radiansPerSecond * delta;
+    // cube.rotation.z += radiansPerSecond * delta;
   };
 
   return cube;

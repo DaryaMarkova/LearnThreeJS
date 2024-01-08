@@ -12,21 +12,20 @@ export class World {
     this.camera = createCamera();
     this.scene = createScene();
     this.renderer = createRenderer();
-    this.light = createLights();
+
+    const { ambientLight, mainLight } = createLights();
 
     this.loop = new Loop(this.camera, this.scene, this.renderer);
 
     container.append(this.renderer.domElement);
 
     this.cube = createCube(2, 2, 2);
-    // элементы управления
     this.controls = createControls(this.camera, this.renderer.domElement);
     this.controls.target.copy(this.cube.position);
 
-    this.scene.add(this.cube, this.light);
+    this.scene.add(ambientLight, mainLight, this.cube, this.light);
 
     this.loop.updatables.push(this.cube);
-    // this.loop.updatables.push(this.controls);
     this.resizer = new Resizer(container, this.camera, this.renderer);
   }
 
